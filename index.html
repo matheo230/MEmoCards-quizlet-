@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MemoCards</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <aside class="sidebar">
+      <div class="brand"><span class="brand-icon">✦</span><span>MemoCards</span></div>
+      <button class="new-folder-btn" id="newFolderBtn">＋ Nouveau dossier</button>
+      <div class="side-title">MES DOSSIERS</div>
+      <nav id="folderList"></nav>
+      <div class="sidebar-bottom">
+        <button class="side-action" id="exportBtn">⇩ Exporter mes données</button>
+        <label class="side-action import-label">⇧ Importer des données
+          <input type="file" id="importInput" accept=".json" hidden>
+        </label>
+        <button class="side-action danger-text" id="resetBtn">↻ Réinitialiser</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="mobile-menu" id="mobileMenu">☰</button>
+        <div class="breadcrumb" id="breadcrumb">Accueil</div>
+        <div class="top-actions">
+          <button class="icon-btn" id="themeBtn" title="Changer le thème">☾</button>
+        </div>
+      </header>
+
+      <section class="content" id="content"></section>
+    </main>
+  </div>
+
+  <div class="modal hidden" id="modal">
+    <div class="modal-card">
+      <div class="modal-head">
+        <h2 id="modalTitle">Nouveau dossier</h2>
+        <button class="close-btn" id="closeModal">×</button>
+      </div>
+      <form id="folderForm">
+        <label>Nom du dossier</label>
+        <input id="folderName" maxlength="50" placeholder="Ex. Histoire" required>
+        <div class="modal-actions">
+          <button type="button" class="btn secondary" id="cancelModal">Annuler</button>
+          <button type="submit" class="btn primary">Créer</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal hidden" id="cardModal">
+    <div class="modal-card large">
+      <div class="modal-head">
+        <h2 id="cardModalTitle">Nouvelle carte</h2>
+        <button class="close-btn" id="closeCardModal">×</button>
+      </div>
+      <form id="cardForm">
+        <label>Recto — question / terme</label>
+        <textarea id="cardFront" maxlength="500" placeholder="Ex. Quelle est la date de la Révolution française ?" required></textarea>
+        <label>Verso — réponse / définition</label>
+        <textarea id="cardBack" maxlength="500" placeholder="Ex. 1789" required></textarea>
+        <div class="modal-actions">
+          <button type="button" class="btn secondary" id="cancelCardModal">Annuler</button>
+          <button type="submit" class="btn primary">Enregistrer</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <script src="script.js"></script>
+</body>
+</html>
